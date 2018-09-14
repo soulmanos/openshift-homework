@@ -1,5 +1,5 @@
 ---
   - name: copy-j2-template
     template: 
-      src: ../files/bashrc.j2
+      src: files/bashrc.j2
       dest: /root/.bashrc
