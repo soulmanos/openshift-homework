@@ -9,7 +9,12 @@
   hosts: nodes
   tasks:
     - name: docker status
-      shell: systemctl status docker
+      service:
+        name: docker
+        state: started
+        enabled: yes
+        tags: 
+        - docker
 
 - name: Verify NFS Shared Volumes on Hosts
   hosts: nfs
