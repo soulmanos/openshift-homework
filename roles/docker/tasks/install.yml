@@ -1,5 +1,5 @@
 ---
-  - name: install apache web server
+  - name: install-docker
     yum:
       name: docker
       state: installed
