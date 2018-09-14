@@ -1,5 +1,7 @@
 ---
 - hosts: nodes
+  include_vars: common-vars.yml
   become: true
   roles:
+    - systems
     - docker
