@@ -1,6 +1,6 @@
 ---
 - hosts: nodes
-  include_vars: common-vars.yml
+  include_vars: host_vars/common-vars.yml
   become: true
   roles:
     - systems
