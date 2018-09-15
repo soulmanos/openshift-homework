@@ -10,6 +10,8 @@
       var: returned_guid
   - set_fact:
       guid: "{{ returned_guid }}"
+  - name: aa
+    command: echo "{{ guid }}"      
 
 - hosts: nodes
   become: true
