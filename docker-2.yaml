@@ -5,11 +5,11 @@
     shell: 'hostname | cut -d"." -f2'
     args:
       chdir: "/"
-    register: guid
+    register: returned_guid
   - debug:
-      var: guid
+      var: returned_guid
   - set_fact:
-      guid: {{ guid }}    
+      guid: "{{ returned_guid }}"
 
 - hosts: nodes
   become: true
