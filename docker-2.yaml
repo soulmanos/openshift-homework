@@ -12,7 +12,7 @@
 - hosts: nodes
   become: true
   vars:
-    guid: "{{ hostvars['localhost']['guid'] }}"
+    guid: "{{ hostvars['localhost']['guid'].stdout }}"
   roles:
     - systems
     - docker
