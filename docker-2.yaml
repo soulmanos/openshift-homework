@@ -16,7 +16,7 @@
 - hosts: nodes
   become: true
   vars:
-    global_guid: "{{ hostvars['localhost']['guid'] }}""
+    global_guid: "{{ hostvars['localhost']['guid'] }}"
   tasks:
   - debug:
       var: hostvars['localhost']['guid']
