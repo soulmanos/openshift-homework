@@ -6,21 +6,13 @@
     args:
       chdir: "/"
     register: returned_guid
-  - debug:
-      var: returned_guid
   - set_fact:
-      guid: "{{ returned_guid }}"
-  - name: aa
-    command: echo "{{ guid }}"      
+      guid: "{{ returned_guid }}"     
 
 - hosts: nodes
   become: true
   vars:
-    global_guid: "{{ hostvars['localhost']['guid'] }}"
-  tasks:
-  - debug:
-      var: hostvars['localhost']['guid']
-  - debug:
-      var: global_guid
-  - name:
-    shell: 'echo "{{ global_guid }}"'
+    guid: "{{ hostvars['localhost']['guid'] }}"
+  roles:
+    - systems
+    - docker
