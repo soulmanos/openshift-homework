@@ -19,4 +19,4 @@
   - name: dump-out-guid-variable-via-debug
     shell: 'echo "{{ guid }}"'
   - debug:
-      var: guid
+      var: hostvars['localhost']['guid']
