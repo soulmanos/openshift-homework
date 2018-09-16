@@ -16,6 +16,5 @@
 - hosts: nodes
   become: true
   tasks:
-  - name: dump-out-guid-variable-via-debug
   - debug:
       var: hostvars['localhost']['guid']
