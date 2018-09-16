@@ -1,0 +1,3 @@
+---
+# tasks file for nfs
+- import_tasks: verify-nfs-exports.yml

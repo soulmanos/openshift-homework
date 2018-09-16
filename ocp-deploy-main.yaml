@@ -16,3 +16,8 @@
   roles:
     - systems
     - docker
+
+- hosts: nfs
+  become: true
+  roles:
+    - { nfs, tags: ['export_nfs'] }

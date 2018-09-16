@@ -1,0 +1,4 @@
+---
+  - name: verify-nfs-shared-volumes-on-hosts
+    shell: exportfs
+    tags: export_nfs

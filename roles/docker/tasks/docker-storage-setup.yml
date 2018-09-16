@@ -1,0 +1,12 @@
+# This is incomplete - dropping for now
+---
+  - name: docker-storage-copy-conf-file
+    template:
+      src: files/docker-storage-conf.j2
+      dest: /etc/sysconfig/docker-storage-setup
+  - name: validate-pre-created-vgroup
+    command: vgs
+    register: output
+    failed_when: ""
+  - name: docker-storage-setup
+    shell: 'docker-storage-setup'   
