@@ -17,6 +17,5 @@
   become: true
   tasks:
   - name: dump-out-guid-variable-via-debug
-    shell: 'echo "{{ guid }}"'
   - debug:
       var: hostvars['localhost']['guid']
