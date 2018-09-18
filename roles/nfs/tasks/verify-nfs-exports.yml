@@ -1,4 +1,7 @@
 ---
   - name: verify-nfs-shared-volumes-on-hosts
     shell: exportfs
+    register: returned_var
     tags: export_nfs
+    debug:
+      var: returned_var
