@@ -3,5 +3,5 @@
     shell: exportfs
     register: returned_var
     tags: export_nfs
-    debug:
+  - debug:
       var: returned_var
