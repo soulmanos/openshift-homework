@@ -4,4 +4,4 @@
     register: returned_var
     tags: export_nfs
   - debug:
-      var: returned_var
+      var: returned_var.stdout_lines
