@@ -1,0 +1,8 @@
+---
+  - name: ansible-register-variable-basic-example
+    shell: 'hostname | cut -d"." -f2'
+    args:
+      chdir: "/"
+    register: returned_guid
+  - set_fact:
+      guid: "{{ returned_guid }}"     

@@ -1,0 +1,5 @@
+---
+# tasks file for bastion
+- import_tasks: return-guid.yml
+- import_tasks: generate-hosts-template.yml
+- import_tasks: install-ocp-dependency-packages.yml

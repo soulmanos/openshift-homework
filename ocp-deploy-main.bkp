@@ -1,0 +1,55 @@
+---
+- hosts: localhost
+  tasks:
+  - name: ansible-register-variable-basic-example
+    shell: 'hostname | cut -d"." -f2'
+    args:
+      chdir: "/"
+    register: returned_guid
+  - set_fact:
+      guid: "{{ returned_guid }}"     
+
+- hosts: localhost
+  tasks:
+    - name: copy-hosts-j2-template
+      vars:
+        retrieved_guid: "{{ hostvars['localhost']['guid'].stdout }}"
+      template:
+        src: hosts.j2
+        dest: ./hosts.generated
+
+- hosts: localhost
+  tasks:
+  - name: install-packages-and-config-auth
+    yum:
+      name: "{{ item }}"
+      state: present
+      update_cache: yes
+    with_items:
+      - wget 
+      - git 
+      - net-tools 
+      - bind-utils 
+      - iptables-services
+      - bridge-utils 
+      - bash-completion 
+      - kexec-tools 
+      - sos 
+      - psacct 
+      - tmux
+      - screen
+      - atomic-openshift-utils
+        
+- hosts: nodes
+  become: true
+  vars:
+    guid: "{{ hostvars['localhost']['guid'].stdout }}"
+  roles:
+    - systems
+    - docker
+
+- hosts: nfs
+  become: true
+  roles:
+    - { role: nfs,
+        tags: ['export_nfs'] }
