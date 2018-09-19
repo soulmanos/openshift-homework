@@ -3,7 +3,12 @@
   vars:
   roles:
     - bastion
-        
+
+- hosts: localhost
+  tasks:
+  - name: refresh-inventory
+    meta: refresh_inventory
+
 - hosts: nodes
   become: true
   vars:
