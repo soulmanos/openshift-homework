@@ -44,3 +44,12 @@
       - tmux
       - screen
       - atomic-openshift-utils
+
+- hosts: localhost
+  tasks:
+    - name: copy-hosts-j2-template
+      vars:
+        guid: "{{ hostvars['localhost']['guid'].stdout }}"
+      template:
+        src: hosts.j2
+        dest: /etc/ansible/hosts
