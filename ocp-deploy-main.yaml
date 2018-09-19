@@ -52,4 +52,4 @@
         guid: guid
       template:
         src: hosts.j2
-        dest: hosts.generated
+        dest: ./hosts.generated
