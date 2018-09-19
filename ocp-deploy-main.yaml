@@ -49,7 +49,7 @@
   tasks:
     - name: copy-hosts-j2-template
       vars:
-        guid: guid
+        guid: guid.stdout
       template:
         src: hosts.j2
         dest: ./hosts.generated
