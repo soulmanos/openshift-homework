@@ -4,4 +4,4 @@
       retrieved_guid: "{{ hostvars['localhost']['guid'].stdout }}"
     template:
       src: files/hosts.j2
-      dest: /etc/ansible/hosts
+      dest: ../../inventory/generated-inventory

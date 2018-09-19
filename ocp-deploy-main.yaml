@@ -17,3 +17,6 @@
   roles:
     - { role: nfs,
         tags: ['export_nfs'] }
+
+- name: Execute the openshift-ansible prerequisites
+  import_playbook: /usr/share/ansible/openshift-ansible/playbooks/prerequisites.yml
