@@ -27,9 +27,9 @@ openshift_master_api_port=443
 openshift_master_console_port=443
 
 openshift_master_cluster_method=native
-openshift_master_cluster_hostname=loadbalancer1.{{ guid }}.internal
-openshift_master_cluster_public_hostname=loadbalancer1.{{ guid }}.example.opentlc.com
-openshift_master_default_subdomain=apps.{{ guid }}.example.opentlc.com
+openshift_master_cluster_hostname=loadbalancer1.{{ retrieved_guid }}.internal
+openshift_master_cluster_public_hostname=loadbalancer1.{{ retrieved_guid }}.example.opentlc.com
+openshift_master_default_subdomain=apps.{{ retrieved_guid }}.example.opentlc.com
 #openshift_master_ca_certificate={'certfile': '/root/intermediate_ca.crt', 'keyfile': '/root/intermediate_ca.key'}
 openshift_master_overwrite_named_certificates=True
 
@@ -116,7 +116,7 @@ openshift_logging_storage_volume_name=logging
 openshift_logging_storage_volume_size=10Gi
 openshift_logging_storage_labels={'storage': 'logging'}
 
-# openshift_logging_kibana_hostname=kibana.apps.{{ guid }}.example.opentlc.com
+# openshift_logging_kibana_hostname=kibana.apps.{{ retrieved_guid }}.example.opentlc.com
 openshift_logging_es_cluster_size=1
 openshift_logging_es_nodeselector={"env":"infra"}
 openshift_logging_kibana_nodeselector={"env":"infra"}
@@ -173,32 +173,32 @@ nodes
 nfs
 
 [lb]
-loadbalancer1.{{ guid }}.internal
+loadbalancer1.{{ retrieved_guid }}.internal
 
 [masters]
-master1.{{ guid }}.internal
-master2.{{ guid }}.internal
-master3.{{ guid }}.internal
+master1.{{ retrieved_guid }}.internal
+master2.{{ retrieved_guid }}.internal
+master3.{{ retrieved_guid }}.internal
 
 [etcd]
-master1.{{ guid }}.internal
-master2.{{ guid }}.internal
-master3.{{ guid }}.internal
+master1.{{ retrieved_guid }}.internal
+master2.{{ retrieved_guid }}.internal
+master3.{{ retrieved_guid }}.internal
 
 [nodes]
 ## These are the masters
-master1.{{ guid }}.internal openshift_hostname=master1.{{ guid }}.internal openshift_node_labels="{'env':'master', 'cluster': '{{ guid }}'}"
-master2.{{ guid }}.internal openshift_hostname=master2.{{ guid }}.internal openshift_node_labels="{'env':'master', 'cluster': '{{ guid }}'}"
-master3.{{ guid }}.internal openshift_hostname=master3.{{ guid }}.internal openshift_node_labels="{'env':'master', 'cluster': '{{ guid }}'}"
+master1.{{ retrieved_guid }}.internal openshift_hostname=master1.{{ retrieved_guid }}.internal openshift_node_labels="{'env':'master', 'cluster': '{{ retrieved_guid }}'}"
+master2.{{ retrieved_guid }}.internal openshift_hostname=master2.{{ retrieved_guid }}.internal openshift_node_labels="{'env':'master', 'cluster': '{{ retrieved_guid }}'}"
+master3.{{ retrieved_guid }}.internal openshift_hostname=master3.{{ retrieved_guid }}.internal openshift_node_labels="{'env':'master', 'cluster': '{{ retrieved_guid }}'}"
 
 ## These are infranodes
-infranode1.{{ guid }}.internal openshift_hostname=infranode1.{{ guid }}.internal  openshift_node_labels="{'env':'infra', 'cluster': '{{ guid }}'}"
-infranode2.{{ guid }}.internal openshift_hostname=infranode2.{{ guid }}.internal  openshift_node_labels="{'env':'infra', 'cluster': '{{ guid }}'}"
+infranode1.{{ retrieved_guid }}.internal openshift_hostname=infranode1.{{ retrieved_guid }}.internal  openshift_node_labels="{'env':'infra', 'cluster': '{{ retrieved_guid }}'}"
+infranode2.{{ retrieved_guid }}.internal openshift_hostname=infranode2.{{ retrieved_guid }}.internal  openshift_node_labels="{'env':'infra', 'cluster': '{{ retrieved_guid }}'}"
 
 ## These are regular nodes
-node1.{{ guid }}.internal openshift_hostname=node1.{{ guid }}.internal  openshift_node_labels="{'client':'alpha', 'cluster': '{{ guid }}'}"
-node2.{{ guid }}.internal openshift_hostname=node2.{{ guid }}.internal  openshift_node_labels="{'client':'beta', 'cluster': '{{ guid }}'}"
-node3.{{ guid }}.internal openshift_hostname=node3.{{ guid }}.internal  openshift_node_labels="{'client':'common', 'cluster': '{{ guid }}'}"
+node1.{{ retrieved_guid }}.internal openshift_hostname=node1.{{ retrieved_guid }}.internal  openshift_node_labels="{'client':'alpha', 'cluster': '{{ retrieved_guid }}'}"
+node2.{{ retrieved_guid }}.internal openshift_hostname=node2.{{ retrieved_guid }}.internal  openshift_node_labels="{'client':'beta', 'cluster': '{{ retrieved_guid }}'}"
+node3.{{ retrieved_guid }}.internal openshift_hostname=node3.{{ retrieved_guid }}.internal  openshift_node_labels="{'client':'common', 'cluster': '{{ retrieved_guid }}'}"
 
 [nfs]
-support1.{{ guid }}.internal openshift_hostname=support1.{{ guid }}.internal
+support1.{{ retrieved_guid }}.internal openshift_hostname=support1.{{ retrieved_guid }}.internal
