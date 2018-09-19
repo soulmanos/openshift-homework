@@ -4,4 +4,4 @@
       retrieved_guid: "{{ hostvars['localhost']['guid'].stdout }}"
     template:
       src: files/hosts.j2
-      dest: ../../inventory/generated-inventory
+      dest: ../../../inventory/generated-inventory
