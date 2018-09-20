@@ -29,15 +29,19 @@
 #- name: Execute the openshift-ansible Deployer
 #  import_playbook: /usr/share/ansible/openshift-ansible/playbooks/deploy_cluster.yml
 
-#- name: Verify OpenShift Cluster
-#  hosts: masters[0]
-#  tasks:
-#    - name: copy the .kube directory from master1 to your bastion
-#    ????
+- name: collect-kube-creds-from-master
+  hosts: masters[0]
+  tasks:
+    - name: copy the .kube directory from master1 to your bastion
+      fetch:
+        src: /root/.kube/config
+        dest: /root/.kube/config
+        flat: yes
 
-#- name: Post installation configuration
-#  hosts: localhost
-#  tasks:
-#    - name: make sure you are system:dmin
-#      shell: oc whoami | grep system:admin
+- name: validate-kube-config-auth
+  hosts: localhost
+  tasks:
+    - name: make sure you are system:admin
+      shell: oc whoami | grep system:admin
+
 
