@@ -14,4 +14,25 @@ SSH to Bastion Host in OpenShift Homework Lab v3.9:
 
 From Bash Shell:
 
-`ansible-playbook hw1.yaml`
+`ansible-playbook ocp-deploy-main.yaml -i inventory`
+
+
+### Installs:
+
+```
+INSTALLER STATUS *******************************************************
+Initialization             : Complete (0:00:31)
+Health Check               : Complete (0:01:35)
+etcd Install               : Complete (0:01:09)
+NFS Install                : Complete (0:00:15)
+Load balancer Install      : Complete (0:00:20)
+Master Install             : Complete (0:04:21)
+Master Additional Install  : Complete (0:01:04)
+Node Install               : Complete (0:06:11)
+Hosted Install             : Complete (0:01:40)
+Web Console Install        : Complete (0:00:32)
+Metrics Install            : Complete (0:02:07)
+Logging Install            : Complete (0:03:00)
+Prometheus Install         : Complete (0:00:46)
+Service Catalog Install    : Complete (0:01:39)
+```

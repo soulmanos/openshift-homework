@@ -1,7 +1,7 @@
 ---
-  - name: copy-hosts-j2-template
+  - name: generate-hosts-j2-template
     vars:
       retrieved_guid: "{{ hostvars['localhost']['guid'].stdout }}"
     template:
       src: files/hosts.j2
-      dest: /root/openshift-homework/inventory/generated-inventory
+      dest: ../../../inventory/generated-inventory

@@ -23,8 +23,21 @@
     - { role: nfs,
         tags: ['export_nfs'] }
 
-- name: Execute the openshift-ansible prerequisites
-  import_playbook: /usr/share/ansible/openshift-ansible/playbooks/prerequisites.yml
+#- name: Execute the openshift-ansible prerequisites
+#  import_playbook: /usr/share/ansible/openshift-ansible/playbooks/prerequisites.yml
 
-- name: Execute the openshift-ansible Deployer
-  import_playbook: /usr/share/ansible/openshift-ansible/playbooks/deploy_cluster.yml
+#- name: Execute the openshift-ansible Deployer
+#  import_playbook: /usr/share/ansible/openshift-ansible/playbooks/deploy_cluster.yml
+
+#- name: Verify OpenShift Cluster
+#  hosts: masters[0]
+#  tasks:
+#    - name: copy the .kube directory from master1 to your bastion
+#    ????
+
+#- name: Post installation configuration
+#  hosts: localhost
+#  tasks:
+#    - name: make sure you are system:dmin
+#      shell: oc whoami | grep system:admin
+

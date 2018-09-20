@@ -18,3 +18,4 @@
       - tmux
       - screen
       - atomic-openshift-utils
+      - httpd-tools
