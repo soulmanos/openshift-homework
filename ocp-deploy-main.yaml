@@ -1,5 +1,6 @@
 ---
 - hosts: localhost
+  tags: bastion
   vars:
   roles:
     - bastion
