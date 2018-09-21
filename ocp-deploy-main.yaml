@@ -41,8 +41,15 @@
 - name: validate-kube-config-auth
   hosts: localhost
   tasks:
-    - name: make sure you are system:admin
+    - name: check-system-admin
       shell: oc whoami | grep system:admin
+      register: whoami
+    - name: echo-result
+      shell: echo "You are the user:" "{{ whoami }}" "
+      when: whoami.stdout.find('system:admin') != -1
+    - fail:
+        msg: "you are not system:admin"
+      when: whoami.stdout.find('system:admin') = -1
 
 - hosts: nfs
   become: true
