@@ -55,7 +55,7 @@
         msg: "{{ out.stdout }}"
     - fail:
         msg: "you are not system:admin"
-      when: whoami.stdout.find('system') = -1
+      when: whoami.stdout.find('blahblha') == -1
 
 - hosts: nfs
   become: true
