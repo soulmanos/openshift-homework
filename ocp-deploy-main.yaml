@@ -83,4 +83,5 @@
   tasks:
     - name: oc-create
       shell: cat /root/pvs/* | oc create -f -
-# for p in pv{1..10}; do cat $p; done
+
+- name: Fix NFS Persistent Volume Recycling
