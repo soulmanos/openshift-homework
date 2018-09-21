@@ -78,6 +78,7 @@
         tags: ['create_pvs', 'restart_nfs'] }
 
 - name: create-pvs-from-definitions
+  hosts: localhost
   tags: pvs-oc-create
   tasks:
     - name: oc-create
