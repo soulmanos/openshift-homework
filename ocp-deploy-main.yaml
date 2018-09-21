@@ -32,7 +32,7 @@
 - name: collect-kube-creds-from-master
   hosts: masters[0]
   tasks:
-    - name: copy the .kube directory from master1 to your bastion
+    - name: retrieve-the-kube-directory-from-a-master-to-bastion
       fetch:
         src: /root/.kube/config
         dest: /root/.kube/config
@@ -44,4 +44,18 @@
     - name: make sure you are system:admin
       shell: oc whoami | grep system:admin
 
+- hosts: nfs
+  become: true
+  roles:
+    - { role: nfs,
+        tags: ['create_pvs'] }
 
+- name: create-25-5GB-pvs-definition-files
+  hosts: localhost
+  script: scripts/pvs_5Gsize.sh
+  args:
+    creates: /root/pvs/pv1
+
+#- name: Create 25 definitions files for PVs 10G size
+
+#- name: Create all PVs from definitions files        

@@ -1,0 +1,11 @@
+---
+  - name: create-pvs-dirs-and-add-to-exports
+    script: files/create_pvs.sh
+    args:
+      creates: /srv/nfs/user-vols/pv1
+    tags: create_pvs
+  - name: restart-nfs-server
+    service:
+      name: nfs-server
+      state: restarted
+      enabled: yes
