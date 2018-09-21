@@ -78,29 +78,8 @@
         tags: ['create_pvs', 'restart_nfs'] }
 
 - name: create-pvs-from-definitions
-  tags: oc_raw
-  vars_files:
-    - host_vars/pvs.yml
-  vars:
-    guid: "{{ hostvars['localhost']['guid'].stdout }}"
-  openshift_raw:
-    state: present
-    definition:
-      apiVersion: v1
-      kind: PersistentVolume
-      metadata:
-        name: "{{ item }}"
-      spec: 
-        capacity:
-          storage: "{{ storage }}"
-        accessModes:
-        - ReadWriteOnce
-        nfs:
-          path: "{{ path }}{{ item }}"
-          server: support1."{{ guid }}".internal
-        persistentVolumeReclaimPolicy: Recycle
-  with_items: "{{ pvs }}"
-
-# cat /root/pvs/* | oc create -f -
-# prints out files
+  tags: pvs-oc-create
+  tasks:
+    - name: oc-create
+      shell: cat /root/pvs/* | oc create -f -
 # for p in pv{1..10}; do cat $p; done

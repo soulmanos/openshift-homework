@@ -1,5 +1,17 @@
+# host_vars/pvs.yml
+---
+storage: 5Gi
+path: "/srv/nfs/user-vols/"
+pvs: 
+  - pv1
+  - pv2
+  - pv3
+
+
+## This is what you'd do if Anisble 2.5 was available on the server
+# playbook
 - name: create-pvs-from-definitions
-  tags: oc_raw
+  tags: oc-raw
   vars_files:
     - host_vars/pvs.yml
   vars:
@@ -10,13 +22,14 @@
       apiVersion: v1
       kind: PersistentVolume
       metadata:
-        name: pv1
+        name: "{{ item }}"
       spec: 
         capacity:
-          storage: 5Gi
+          storage: "{{ storage }}"
         accessModes:
         - ReadWriteOnce
         nfs:
-          path: "/srv/nfs/user-vols/pv1"
-          server: support1.ad27.internal
+          path: "{{ path }}{{ item }}"
+          server: support1."{{ guid }}".internal
         persistentVolumeReclaimPolicy: Recycle
+  with_items: "{{ pvs }}"
