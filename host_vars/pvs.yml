@@ -1,0 +1,9 @@
+---
+storage: 5Gi
+path: "/srv/nfs/user-vols/"
+pvs: 
+  - pv1
+  - pv2
+  - pv3
+
+#server: support1.ad27.internal

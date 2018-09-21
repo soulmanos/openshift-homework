@@ -1,0 +1,22 @@
+- name: create-pvs-from-definitions
+  tags: oc_raw
+  vars_files:
+    - host_vars/pvs.yml
+  vars:
+    guid: "{{ hostvars['localhost']['guid'].stdout }}"
+  openshift_raw:
+    state: present
+    definition:
+      apiVersion: v1
+      kind: PersistentVolume
+      metadata:
+        name: pv1
+      spec: 
+        capacity:
+          storage: 5Gi
+        accessModes:
+        - ReadWriteOnce
+        nfs:
+          path: "/srv/nfs/user-vols/pv1"
+          server: support1.ad27.internal
+        persistentVolumeReclaimPolicy: Recycle

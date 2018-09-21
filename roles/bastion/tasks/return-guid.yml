@@ -1,5 +1,6 @@
 ---
   - name: ansible-register-variable-basic-example
+    tags: return_guid
     shell: 'hostname | cut -d"." -f2'
     args:
       chdir: "/"
