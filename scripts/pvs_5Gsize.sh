@@ -17,7 +17,7 @@ cat << EOF > /root/pvs/${volume}
     "accessModes": [ "ReadWriteOnce" ],
     "nfs": {
         "path": "/srv/nfs/user-vols/${volume}",
-        "server": "support1.$GUID.internal"
+        "server": "support1.$1.internal"
     },
     "persistentVolumeReclaimPolicy": "Recycle"
   }

@@ -45,8 +45,6 @@
     - name: check-system-admin
       shell: oc whoami | grep system:admin
       register: whoami
-#    - debug:
-#        var: whoami
     - name: echo-result
       shell: 'echo Congratulations you have become the "{{ whoami.stdout }}"'
       register: out
@@ -57,19 +55,25 @@
         msg: "you are not system:admin"
       when: whoami.stdout.find('system:admin') == -1
 
+- name: create-pvs-definition-files-on-bastion
+  hosts: localhost
+  vars:
+    guid: "{{ hostvars['localhost']['guid'].stdout }}"
+  tags: create-defs
+  tasks:
+    - name: create-25-5GB-pvs-definition-files
+      script: scripts/pvs_5Gsize.sh "{{ guid }}"
+      args:
+        creates: /root/pvs/pv1
+    - name: create-25-10GB-pvs-definition-files
+      script: scripts/pvs_10Gsize.sh "{{ guid }}"
+      args:
+        creates: /root/pvs/pv26
+
 - hosts: nfs
   become: true
   roles:
     - { role: nfs,
-        tags: ['create_pvs'] }
-
-- name: create-25-5GB-pvs-definition-files
-  hosts: localhost
-  tasks:
-    - script: scripts/pvs_5Gsize.sh
-      args:
-        creates: /root/pvs/pv1
-
-#- name: Create 25 definitions files for PVs 10G size
+        tags: ['create_pvs', 'restart_nfs'] }
 
 #- name: Create all PVs from definitions files        
