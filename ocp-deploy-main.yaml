@@ -53,9 +53,9 @@
       when: whoami.stdout.find('admin') != -1
     - debug: 
         msg: "{{ out.stdout }}"
-#    - fail:
-#        msg: "you are not system:admin"
-#      when: whoami.stdout.find('system:admin') = -1
+    - fail:
+        msg: "you are not system:admin"
+      when: whoami.stdout.find('error') = -1
 
 - hosts: nfs
   become: true
