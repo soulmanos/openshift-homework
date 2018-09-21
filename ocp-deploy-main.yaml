@@ -48,8 +48,8 @@
     - debug:
         var: whoami
     - name: echo-result
-      shell: echo You are now "{{ whoami }}"
-      when: whoami.stdout.find('admin') != -1
+      shell: 'echo You are now the "{{ whoami }}"'
+      #when: whoami.stdout.find('admin') != -1
 #    - fail:
 #        msg: "you are not system:admin"
 #      when: whoami.stdout.find('system:admin') = -1
