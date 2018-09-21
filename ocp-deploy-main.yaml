@@ -49,7 +49,10 @@
         var: whoami
     - name: echo-result
       shell: 'echo You are now the "{{ whoami }}"'
-      #when: whoami.stdout.find('admin') != -1
+      register: out
+      when: whoami.stdout.find('admin') != -1
+    - debug: 
+        msg: "{{ out.stdout }}"
 #    - fail:
 #        msg: "you are not system:admin"
 #      when: whoami.stdout.find('system:admin') = -1
