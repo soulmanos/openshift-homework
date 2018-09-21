@@ -52,9 +52,10 @@
 
 - name: create-25-5GB-pvs-definition-files
   hosts: localhost
-  script: scripts/pvs_5Gsize.sh
-  args:
-    creates: /root/pvs/pv1
+  tasks:
+    - script: scripts/pvs_5Gsize.sh
+      args:
+        creates: /root/pvs/pv1
 
 #- name: Create 25 definitions files for PVs 10G size
 
