@@ -45,10 +45,10 @@
     - name: check-system-admin
       shell: oc whoami | grep system:admin
       register: whoami
-    - debug:
-        var: whoami
+#    - debug:
+#        var: whoami
     - name: echo-result
-      shell: 'echo You are now the "{{ whoami }}"'
+      shell: 'echo Congratulations you have become the "{{ whoami.stdout }}"'
       register: out
       when: whoami.stdout.find('admin') != -1
     - debug: 
