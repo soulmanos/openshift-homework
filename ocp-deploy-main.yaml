@@ -62,11 +62,11 @@
   tags: create-defs
   tasks:
     - name: create-25-5GB-pvs-definition-files
-      script: scripts/pvs_5Gsize.sh "{{ guid }}"
+      script: scripts/pvs_5Gsize.sh "{{ guid.stdout }}"
       args:
         creates: /root/pvs/pv1
     - name: create-25-10GB-pvs-definition-files
-      script: scripts/pvs_10Gsize.sh "{{ guid }}"
+      script: scripts/pvs_10Gsize.sh "{{ guid.stdout }}"
       args:
         creates: /root/pvs/pv26
 
