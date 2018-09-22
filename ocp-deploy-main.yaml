@@ -91,9 +91,8 @@
     - name: pull-docker-images-for-recycler
       docker_image:
         name: registry.access.redhat.com/openshift3/ose-recycler:latest
-        tag: v3.9.30
+        repository: registry.access.redhat.com/openshift3/ose-recycler:v3.9.30
 
-#      repository: registry.access.redhat.com/openshift3/ose-recycler      
 #- name: Fix NFS Persistent Volume Recycling
 #  hosts: nodes
 #  tags: recycle
