@@ -77,6 +77,7 @@
     - { role: nfs,
         tags: ['create_pvs', 'restart_nfs'] }
 
+# In Ansible 2.5 you can use the openshift_raw module to achieve this result, negating need to create definition files as well        
 - name: create-pvs-from-definitions
   hosts: localhost
   tags: pvs-oc-create
@@ -91,13 +92,7 @@
     - name: pull-docker-images-for-recycler
       docker_image:
         name: registry.access.redhat.com/openshift3/ose-recycler:latest
-        repository: registry.access.redhat.com/openshift3/ose-recycler:v3.9.30
+        repository: registry.access.redhat.com/openshift3/ose-recycler:v3.9.30  # This is the equivalent of "docker tag"
 
-#- name: Fix NFS Persistent Volume Recycling
-#  hosts: nodes
-#  tags: recycle
-#  tasks:
-#    - name: step-1
-#      shell: docker pull registry.access.redhat.com/openshift3/ose-recycler:latest
-#    - name: step-2
-#      shell: docker tag registry.access.redhat.com/openshift3/ose-recycler:latest registry.access.redhat.com/openshift3/ose-recycler:v3.9.30
+# https://www.katacoda.com/logandonley/scenarios/openshift-applier
+# https://mcanoy.github.io/2017/10/26/deploying-gitlab-to-openshift-with-the-applier/        
