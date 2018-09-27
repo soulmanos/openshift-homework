@@ -94,5 +94,8 @@
         name: registry.access.redhat.com/openshift3/ose-recycler:latest
         repository: registry.access.redhat.com/openshift3/ose-recycler:v3.9.30  # This is the equivalent of "docker tag"
 
-# https://www.katacoda.com/logandonley/scenarios/openshift-applier
-# https://mcanoy.github.io/2017/10/26/deploying-gitlab-to-openshift-with-the-applier/        
+#- name: Jenkins Setup
+#  hosts: localhost
+#  tasks:
+#    - name: jenkins setup
+#      script: ???        
