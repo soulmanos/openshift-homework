@@ -111,9 +111,9 @@
         sed -i -e 's/projectRequestTemplate: \x27\x27/projectRequestTemplate: \x27default\/project-request\x27/g' /etc/origin/master/master-config.yaml
     - name: inspect-change
       shell: cat /etc/origin/master/master-config.yaml | grep projectRequestTemplate
-      register: returned-master-config
+      register: returned_master_config
     - debug:
-        msg: "{{ returned-master-config.stdout }}"
+        msg: "{{ returned_master_config.stdout }}"
     - name: restart-masters-api
       shell: systemctl restart atomic-openshift-master-api
 
