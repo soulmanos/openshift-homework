@@ -96,11 +96,16 @@
 
 # Secure the projects with default network policies
 - name: secure-projects-with-network-policies
-  hosts: masters
-  tags: secure-projects
+  hosts: localhost
+  tags: create-secure-project-template
   tasks:
     - name: oc-create-new-project-template
       shell: oc create -f templates/default-bootstrap-template-customised.yaml -n default
+
+- name: update-the-master-config-yaml-file
+  hosts: masters
+  tags: secure-projects      
+  tasks:
     - name: update-masters-master-yaml
       shell: >
         sed -i -e 's/projectRequestTemplate: \x27\x27/projectRequestTemplate: \x27default\/project-request\x27/g' /etc/origin/master/master-config.yaml
@@ -110,7 +115,7 @@
     - debug:
         msg: "{{ returned-master-config.stdout }}"
     - name: restart-masters-api
-      shell: systemctl start atomic-openshift-master-api
+      shell: systemctl restart atomic-openshift-master-api
 
 # Run the smoke-test app with openshift-applier
 #- name: Jenkins Setup
