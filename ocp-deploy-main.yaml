@@ -120,8 +120,15 @@
     - name: restart-masters-api
       shell: systemctl restart atomic-openshift-master-api
 
-- import_playbook: ../ocp-oa-nodejs-mongo-persistent/apply.yml
-  tags: smoke      
+- name: smoke-test-deploy
+  tags: smoke
+  tasks:
+    - import_tasks: ../ocp-oa-nodejs-mongo-persistent/apply.yml
+      vars:
+        target:
+          - bootstrap
+          - application
+
 # Run the smoke-test app with openshift-applier
 #- name: Jenkins Setup
 #  hosts: localhost
