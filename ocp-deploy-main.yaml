@@ -102,7 +102,7 @@
     - name: oc-create-new-project-template
       shell: oc create -f templates/default-bootstrap-template-customised.yaml -n default
     - name: update-masters-master-yaml
-      shell: "sed -i -e 's/projectRequestTemplate: \x27\x27/projectRequestTemplate: \x27default\/project-request\x27/g' /etc/origin/master/master-config.yaml"
+      shell: sed -i -e 's/projectRequestTemplate: \x27\x27/projectRequestTemplate: \x27default\/project-request\x27/g' /etc/origin/master/master-config.yaml
     - name: inspect-change
       shell: cat /etc/origin/master/master-config.yaml | grep projectRequestTemplate
       register: returned-master-config
