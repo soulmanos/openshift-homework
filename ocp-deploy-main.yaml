@@ -120,6 +120,8 @@
     - name: restart-masters-api
       shell: systemctl restart atomic-openshift-master-api
 
+- import_playbook: otherplays.yml
+  tags: smoke      
 # Run the smoke-test app with openshift-applier
 #- name: Jenkins Setup
 #  hosts: localhost
