@@ -8,3 +8,5 @@
 #      shell: docker pull registry.access.redhat.com/openshift3/ose-recycler:latest
 #    - name: step-2
 #      shell: docker tag registry.access.redhat.com/openshift3/ose-recycler:latest registry.access.redhat.com/openshift3/ose-recycler:v3.9.30
+
+ansible-playbook -i inventory ocp-deploy-main.yaml --tags "export_nfs"

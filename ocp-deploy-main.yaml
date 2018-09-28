@@ -94,6 +94,24 @@
         name: registry.access.redhat.com/openshift3/ose-recycler:latest
         repository: registry.access.redhat.com/openshift3/ose-recycler:v3.9.30  # This is the equivalent of "docker tag"
 
+# Secure the projects with default network policies
+- name: secure-projects-with-network-policies
+  hosts: masters
+  tags: secure-projects
+  tasks:
+    - name: oc-create-new-project-template
+      shell: oc create -f templates/default-bootstrap-template-customised.yaml -n default
+    - name: update-masters-master-yaml
+      shell: "sed -i -e 's/projectRequestTemplate: \x27\x27/projectRequestTemplate: \x27default\/project-request\x27/g' /etc/origin/master/master-config.yaml"
+    - name: inspect-change
+      shell: cat /etc/origin/master/master-config.yaml | grep projectRequestTemplate
+      register: returned-master-config
+    - debug:
+        msg: "{{ returned-master-config.stdout }}"
+    - name: restart-masters-api
+      shell: systemctl start atomic-openshift-master-api
+
+# Run the smoke-test app with openshift-applier
 #- name: Jenkins Setup
 #  hosts: localhost
 #  tasks:

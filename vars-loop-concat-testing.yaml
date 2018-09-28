@@ -1,9 +1,0 @@
-- hosts: localhost
-  vars_files:
-    - host_vars/pvs.yml
-  tasks:
-    - name: print module name one by one
-      debug:
-        msg: ["{{ item }}", "{{ storage }}", "{{ path }}{{ item }}"]
-      with_items: "{{ pvs }}"
-
