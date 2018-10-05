@@ -1,2 +1,2 @@
-NAME=jenkins
-JENKINS_PASSWORD=openshiftpipelines
+NAMESPACE=cicd
+ENABLE_OAUTH=false
