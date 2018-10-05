@@ -121,14 +121,8 @@
       shell: systemctl restart atomic-openshift-master-api
 
 # Need to merge the smoke-test repo into this one for the homework
-- name: smoke-test-deploy
-  tags: smoke
-  tasks:
-    - include: ../ocp-oa-nodejs-mongo-persistent/apply.yml
-      vars:
-        target:
-          - bootstrap
-          - application
+- import_playbook: ../ocp-oa-nodejs-mongo-persistent/apply.yml
+
 
 # Run the smoke-test app with openshift-applier
 #- name: Jenkins Setup
