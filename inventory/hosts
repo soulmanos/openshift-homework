@@ -1,5 +1,7 @@
 [bootstrap_projects]
 bootstrap
+bootstrap-cicd
 
 [application_deploy]
 application
+jenkins

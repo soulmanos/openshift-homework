@@ -120,13 +120,23 @@
     - name: restart-masters-api
       shell: systemctl restart atomic-openshift-master-api
 
-# Need to merge the smoke-test repo into this one for the homework
 - import_playbook: apply.yml
   tags: smoke
   vars:
     target:
       - bootstrap
       - application
+
+- name: Deploy {{ target }}
+  tags: jenkins
+  hosts:
+    - bootstrap-cicd
+    - jenkins
+  vars:
+    jenkins_namespace: "cicd"
+  tasks:
+    - include_role:
+        name: openshift-applier/roles/openshift-applier      
 
 
 # Run the smoke-test app with openshift-applier

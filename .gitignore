@@ -2,6 +2,7 @@
 lab.sh
 gacp.sh
 network-policies.tar
+scratch.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
