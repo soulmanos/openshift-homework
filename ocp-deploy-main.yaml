@@ -122,6 +122,10 @@
 
 # Need to merge the smoke-test repo into this one for the homework
 - import_playbook: ../ocp-oa-nodejs-mongo-persistent/apply.yml
+  vars:
+    target:
+      - bootstrap
+      - application
 
 
 # Run the smoke-test app with openshift-applier
