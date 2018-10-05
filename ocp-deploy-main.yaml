@@ -120,10 +120,11 @@
     - name: restart-masters-api
       shell: systemctl restart atomic-openshift-master-api
 
+# Need to merge the smoke-test repo into this one for the homework
 - name: smoke-test-deploy
   tags: smoke
   tasks:
-    - import_tasks: ../ocp-oa-nodejs-mongo-persistent/apply.yml
+    - include: ../ocp-oa-nodejs-mongo-persistent/apply.yml
       vars:
         target:
           - bootstrap
