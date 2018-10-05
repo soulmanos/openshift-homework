@@ -1,5 +1,5 @@
-[bootstrap]
+[bootstrap_projects]
 bootstrap
 
-[application]
+[application_deploy]
 application
