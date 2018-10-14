@@ -5,10 +5,10 @@
     - name: install-ansible-roles
       local_action: command ansible-galaxy install -r requirements.yml -p roles/
 
-- name: Deploy {{ target }} 
+- name: Deploy {{ target }} smoke-test
   hosts: "{{ target }}"
   vars:
     nodejs_namespace: "smoke-test"
   tasks:
     - include_role:
-        name: roles/openshift-applier
+        name: openshift-applier/roles/openshift-applier

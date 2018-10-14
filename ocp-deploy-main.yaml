@@ -128,7 +128,7 @@
       - bootstrap
       - application
 
-- name: Deploy {{ target }}
+- name: deploy-jenkins-in-cicd
   tags: jenkins
   hosts:
     - bootstrap-cicd
