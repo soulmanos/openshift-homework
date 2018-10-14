@@ -120,7 +120,8 @@
     - name: restart-masters-api
       shell: systemctl restart atomic-openshift-master-api
 
-- import_playbook: apply.yml
+- name: Smoke-Test
+  import_playbook: apply.yml
   tags: smoke
   vars:
     target:
