@@ -5,3 +5,6 @@ bootstrap-cicd
 [application_deploy]
 application
 jenkins
+
+[cicd_namespaces]
+create-cicd-namespaces

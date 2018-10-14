@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+groupNames: null
+kind: RoleBinding
+metadata:
+  creationTimestamp: null
+  name: edit
+  namespace: cicd-prod
+roleRef:
+  name: edit
+subjects:
+- kind: ServiceAccount
+  name: jenkins
+  namespace: cicd
+userNames:
+- system:serviceaccount:cicd:jenkins

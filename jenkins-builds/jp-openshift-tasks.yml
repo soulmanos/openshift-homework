@@ -1,0 +1,58 @@
+---
+apiVersion: v1
+items:
+- kind: "BuildConfig"
+  apiVersion: "v1"
+  metadata:
+    name: "jp-openshift-tasks"
+  spec:
+    source:
+      git:
+        uri: "https://github.com/wkulhanek/openshift-tasks.git"
+    strategy:
+      jenkinsPipelineStrategy:
+        jenkinsfile: |
+                      node {
+                        stage ("Build") {
+                          echo '*** Build a new image from git ***'
+                          openshiftBuild apiURL: '', authToken: '', bldCfg: 'tasks-bc', buildName: '', checkForTriggeredDeployments: 'false', commitID: '', namespace: 'cicd-dev', showBuildLogs: 'true', verbose: 'false', waitTime: '', waitUnit: 'sec'
+                          openshiftVerifyBuild apiURL: '', authToken: '', bldCfg: 'tasks-bc', checkForTriggeredDeployments: 'false', namespace: 'cicd-dev', verbose: 'false', waitTime: ''
+                          echo '*** Image Built ***'
+                        }
+
+                        stage ("Deploy and Verify in Development Env") {
+                          echo '*** Run Deployment in Dev ***'
+                          openshiftDeploy apiURL: '', authToken: '', depCfg: 'tasks-bc', namespace: 'cicd-dev', verbose: 'false', waitTime: ''
+                          openshiftVerifyDeployment apiURL: '', authToken: '', depCfg: 'tasks-bc', namespace: 'cicd-dev', replicaCount: '1', verbose: 'false', verifyReplicaCount: 'false', waitTime: ''
+                          echo '*** Deployment Run Complete ***'
+
+                          echo '*** Service Verification Starting ***'
+                          // openshiftVerifyService apiURL: '', authToken: '', namespace: 'cicd-dev', svcName: 'tasks-bc', verbose: 'false'
+                          echo '*** Service Verification Complete ***'
+                          echo '*** Tag latest Image as testready ***'
+                          openshiftTag alias: 'false', apiURL: '', authToken: '', destStream: 'tasks-bc', destTag: 'testready', destinationAuthToken: '', destinationNamespace: 'cicd-test', namespace: 'cicd-dev', srcStream: 'tasks-bc', srcTag: 'latest', verbose: 'false'
+                          echo '*** Tag latest Image as testready Complete ***'
+                        }
+
+                        stage ('Deploy and Test in Testing Env') {
+                          echo '*** Deploy testready build in cicd-test project  ***'
+                          openshiftDeploy apiURL: '', authToken: '', depCfg: 'tasks-bc', namespace: 'cicd-test', verbose: 'false', waitTime: ''
+                          openshiftVerifyDeployment apiURL: '', authToken: '', depCfg: 'tasks-bc', namespace: 'cicd-test', replicaCount: '1', verbose: 'false', verifyReplicaCount: 'false', waitTime: '10'
+                          echo '*** Deploy testready build in cicd-test project complete ***'
+                        }
+
+                        stage ('Promote and Verify in Production Env') {
+                          // echo '*** Waiting for Input ***'
+                          // input 'Should we deploy to Production?'
+                          echo '*** Tagging testready image to prodready ***'
+                          openshiftTag alias: 'false', apiURL: '', authToken: '', destStream: 'tasks-bc', destTag: 'prodready', destinationAuthToken: '', destinationNamespace: 'cicd-prod', namespace: 'cicd-dev', srcStream: 'tasks-bc', srcTag: 'testready', verbose: 'false'
+                          echo '*** Deploying updated prodready image to Production ***'
+                          openshiftDeploy apiURL: '', authToken: '', depCfg: 'tasks-bc', namespace: 'cicd-prod', verbose: 'false', waitTime: ''
+                          openshiftVerifyDeployment apiURL: '', authToken: '', depCfg: 'tasks-bc', namespace: 'cicd-prod', replicaCount: '1', verbose: 'false', verifyReplicaCount: 'false', waitTime: '10'
+                          echo '*** Deploying updated prodready image to Production Complete ***'
+                        }
+                      }
+kind: List
+metadata: {}
+
+

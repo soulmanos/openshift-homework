@@ -2,7 +2,8 @@
 lab.sh
 gacp.sh
 network-policies.tar
-scratch.txt
+scratch.md
+jenkins-deploy-pipeline.md
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
