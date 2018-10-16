@@ -136,7 +136,7 @@
       - application
   tasks:
     - include_role:
-        name: openshift-applier/roles/openshift-applier
+        name: roles/openshift-applier
 
 #- name: Smoke-Test
 #  import_playbook: apply.yml
