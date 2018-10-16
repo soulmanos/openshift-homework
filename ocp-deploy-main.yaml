@@ -128,10 +128,10 @@
       local_action: command ansible-galaxy install -r requirements.yml -p roles/
 
 - name: Deploy {{ target }} smoke-test
+  tags: smoke
   hosts:
     - bootstrap
     - application
-  tags: smoke
   vars:
     nodejs_namespace: "smoke-test"
   tasks:
@@ -157,7 +157,7 @@
     jenkins_namespace: "cicd"
   tasks:
     - include_role:
-        name: openshift-applier/roles/openshift-applier
+        name: roles/openshift-applier
 
 # openshift-applier for all the cicd pipeline tasks - Jenkins was deployed in step above 
 
