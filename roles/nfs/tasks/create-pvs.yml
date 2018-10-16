@@ -4,9 +4,3 @@
     args:
       creates: /srv/nfs/user-vols/pv1
     tags: create_pvs
-  - name: restart-nfs-server
-    tags: restart_nfs
-    service:
-      name: nfs-server
-      state: restarted
-      enabled: yes

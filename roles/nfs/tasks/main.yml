@@ -2,3 +2,4 @@
 # tasks file for nfs
 - import_tasks: verify-nfs-exports.yml
 - import_tasks: create-pvs.yml
+- import_tasks: restart-nfs.yml

@@ -1,0 +1,9 @@
+---
+  - name: restart-nfs-server
+    tags: restart_nfs
+    service:
+      name: nfs-server
+      state: restarted
+      enabled: yes
+  - debug:
+      msg: "got to nfs restart"

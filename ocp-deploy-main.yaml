@@ -71,7 +71,8 @@
       args:
         creates: /root/pvs/pv26
 
-- hosts: nfs
+- name: more-nfs-operations
+  hosts: nfs
   become: true
   roles:
     - { role: nfs,

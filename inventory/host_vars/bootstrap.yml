@@ -10,3 +10,6 @@ openshift_cluster_content:
     tags:
     - projectrequests
     - projectrequests-dev
+    debug:
+      var: hostvars[inventory_hostname]
+      verbosity: 4
