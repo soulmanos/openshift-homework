@@ -128,13 +128,12 @@
       local_action: command ansible-galaxy install -r requirements.yml -p roles/
 
 - name: Deploy {{ target }} smoke-test
-  hosts: "{{ target }}"
+  hosts:
+    - bootstrap
+    - application
   tags: smoke
   vars:
     nodejs_namespace: "smoke-test"
-    target:
-      - bootstrap
-      - application
   tasks:
     - include_role:
         name: roles/openshift-applier
