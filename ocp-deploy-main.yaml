@@ -78,7 +78,7 @@
     - { role: nfs,
         tags: ['create_pvs', 'restart_nfs'] }
   tasks:
-    debug:
+  - debug:
       msg: "got past nfs operations"
 
 # In Ansible 2.5 you can use the openshift_raw module to achieve this result, negating need to create definition files as well        
