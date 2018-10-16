@@ -122,6 +122,7 @@
 
 - name: install-required-roles--openshift-applier--with-ansible-galaxy
   hosts: localhost
+  tags: osa-role-install
   tasks:
     - name: install-ansible-roles
       local_action: command ansible-galaxy install -r requirements.yml -p roles/
