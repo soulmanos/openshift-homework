@@ -4,6 +4,7 @@ gacp.sh
 network-policies.tar
 scratch.md
 jenkins-deploy-pipeline.md
+roles/openshift-applier/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
