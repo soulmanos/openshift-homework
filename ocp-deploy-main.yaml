@@ -159,11 +159,6 @@
   tags: cicd-namespaces
   hosts:
     - create-cicd-namespaces
-  vars:
-    namespace:
-      - "cicd-dev"
-      - "cicd-test"
-      - "cicd-prod"
   tasks:
     - include_role:
         name: roles/openshift-applier/roles/openshift-applier
