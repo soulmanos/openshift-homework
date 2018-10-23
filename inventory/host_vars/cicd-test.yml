@@ -6,10 +6,6 @@ openshift_cluster_content:
   - name: create-the-cicd-project-namespace
     template: "https://raw.githubusercontent.com/redhat-cop/cluster-lifecycle/master/files/projectrequest/template.yml"
     template_action: create
-    params: "{{ playbook_dir }}/params/projectrequests/{{ item }}"
-    with_items:
-      - cicd-dev
-      - cicd-test
-      - cicd-prod
+    params: "{{ playbook_dir }}/params/projectrequests/cicd-test"
     tags:
       - cicd-namespaces

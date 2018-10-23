@@ -7,4 +7,6 @@ application
 jenkins
 
 [cicd_namespaces]
-create-cicd-namespaces
+cicd-dev
+cicd-test
+cicd-prod
