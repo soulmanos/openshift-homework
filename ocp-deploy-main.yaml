@@ -143,16 +143,6 @@
     - include_role:
         name: roles/openshift-applier/roles/openshift-applier
 
-#- name: Smoke-Test
-#  import_playbook: apply.yml
-#  target:
-#    - bootstrap
-#    - application
-#  vars:
-#    target:
-#      - bootstrap
-#      - application
-
 - name: deploy-jenkins-in-cicd
   tags: jenkins
   hosts:
@@ -165,17 +155,17 @@
         name: roles/openshift-applier/roles/openshift-applier
 
 # openshift-applier for all the cicd pipeline tasks - Jenkins was deployed in step above 
+- name: create-cicd-namespaces
+  tags: cicd-namespaces
+  hosts:
+    - create-cicd-namespaces
+  vars:
+    namespace:
+      - "cicd-dev"
+      - "cicd-test"
+      - "cicd-prod"
+  tasks:
+    - include_role:
+        name: roles/openshift-applier/roles/openshift-applier
 
-#- name: create-cicd-namespaces
-#  tags: cicd-namespaces
-#  hosts:
-#    - create-cicd-namespaces
-#  vars:
-#    namespace:
-#      - "cicd-dev"
-#      - "cicd-test"
-#      - "cicd-prod"
-#  tasks:
-#    - include_role:
-#        name: openshift-applier/roles/openshift-applier
-# Maybe create a loop here to loop through and creat each namespace?
+#Maybe create a loop here to loop through and creat each namespace?
