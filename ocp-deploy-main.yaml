@@ -162,7 +162,7 @@
     jenkins_namespace: "cicd"
   tasks:
     - include_role:
-        name: roles/openshift-applier/roles
+        name: roles/openshift-applier/roles/openshift-applier
 
 # openshift-applier for all the cicd pipeline tasks - Jenkins was deployed in step above 
 
