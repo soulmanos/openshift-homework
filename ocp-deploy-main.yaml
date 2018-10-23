@@ -24,10 +24,10 @@
     - { role: nfs,
         tags: ['export_nfs'] }
 
-- name: Execute the openshift-ansible prerequisites
+#- name: Execute the openshift-ansible prerequisites
 #  import_playbook: /usr/share/ansible/openshift-ansible/playbooks/prerequisites.yml
 
-- name: Execute the openshift-ansible Deployer
+#- name: Execute the openshift-ansible Deployer
 #  import_playbook: /usr/share/ansible/openshift-ansible/playbooks/deploy_cluster.yml
 
 - name: collect-kube-creds-from-master
