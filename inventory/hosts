@@ -10,3 +10,4 @@ jenkins
 cicd-dev
 cicd-test
 cicd-prod
+perms-for-cicd

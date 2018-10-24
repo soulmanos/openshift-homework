@@ -1,0 +1,11 @@
+---
+ansible_connection: local
+openshift_cluster_content:
+- object: eap70-basic-s2i-components
+  content:
+  - name: eap70-basic-s2i
+    template: "{{ playbook_dir }}/jenkins-builds/oc-new-app-s2i.yml"
+    params: "{{ playbook_dir }}/params/tasks-bc/build"
+    namespace: "{{ cicd_dev_namespace }}"
+    tags:
+    - app

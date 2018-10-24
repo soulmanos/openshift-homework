@@ -166,4 +166,24 @@
     - include_role:
         name: roles/openshift-applier/roles/openshift-applier
 
-#Maybe create a loop here to loop through and creat each namespace?
+- name: set-permissions-on-namespaces
+  tags: cicd-namespace-permissions
+  hosts:
+    - perms-for-cicd
+  vars:
+    cicd_dev_namespace: "cicd-dev"
+    cicd_test_namespace: "cicd-test"
+    cicd_prod_namespace: "cicd-prod"
+  tasks:
+  - include_role:
+      name: roles/openshift-applier/roles/openshift-applier
+
+#- name: install-tasks-bc-app
+#  tags: cicd-dev-tasks-bc
+#  hosts:
+#    - tasks-bc
+#  vars:
+#    cicd_dev_namespace: "cicd-dev"
+#  tasks:
+#  - include_role:
+#      name: roles/openshift-applier/roles/openshift-applier
