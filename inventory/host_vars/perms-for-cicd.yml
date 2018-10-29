@@ -4,15 +4,15 @@ openshift_cluster_content:
 - object: permissions-for-cicd
   content:
   - name: apply-permissions-for-cicd-dev
-    template: "{{ playbook_dir }}/jenkins-builds/add-role-to-user--edit-to-jenkins-in-cicd-dev.yml"
+    template: "{{ playbook_dir }}/jenkins-builds/add-role-to-user--edit-to-jenkins-in-cicd-dev-template.yml"
     params: "{{ playbook_dir }}/params/jenkins/blank"
     namespace: "{{ cicd_dev_namespace }}"
-  - name: apply-permissions-for-cicd-test
-    template: "{{ playbook_dir }}/jenkins-builds/add-role-to-user--edit-to-jenkins-in-cicd-test.yml"
-    params: "{{ playbook_dir }}/params/jenkins/blank"
-    namespace: "{{ cicd_test_namespace }}"
-  - name: apply-permissions-for-cicd-prod
-    template: "{{ playbook_dir }}/jenkins-builds/add-role-to-user--edit-to-jenkins-in-cicd-prod.yml"
-    params: "{{ playbook_dir }}/params/jenkins/blank"
-    namespace: "{{ cicd_prod_namespace }}"
+#  - name: apply-permissions-for-cicd-test
+#    template: "{{ playbook_dir }}/jenkins-builds/add-role-to-user--edit-to-jenkins-in-cicd-test.yml"
+#    params: "{{ playbook_dir }}/params/jenkins/blank"
+#    namespace: "{{ cicd_test_namespace }}"
+#  - name: apply-permissions-for-cicd-prod
+#    template: "{{ playbook_dir }}/jenkins-builds/add-role-to-user--edit-to-jenkins-in-cicd-prod.yml"
+#    params: "{{ playbook_dir }}/params/jenkins/blank"
+#    namespace: "{{ cicd_prod_namespace }}"
 
