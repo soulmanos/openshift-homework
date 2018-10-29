@@ -178,6 +178,8 @@
   - include_role:
       name: roles/openshift-applier/roles/openshift-applier
 
+# 20181029 - Got to: Create the new-app - Contains the imagestream, buildconfig, deploymentconfig, services and routes in the eap70-basic-s2i template
+
 #- name: install-tasks-bc-app
 #  tags: cicd-dev-tasks-bc
 #  hosts:
