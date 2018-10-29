@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Template
+metadata:
+  creationTimestamp: null
+  name: system-image-puller-0
+objects:
+- apiVersion: v1
+  groupNames:
+  - system:serviceaccounts:cicd-prod
+  kind: RoleBinding
+  metadata:
+    creationTimestamp: null
+    name: system:image-puller-0
+  roleRef:
+    name: system:image-puller
+  subjects:
+  - kind: SystemGroup
+    name: system:serviceaccounts:cicd-prod
+  userNames: null
